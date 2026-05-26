@@ -1,0 +1,45 @@
+:root {
+  /* ── Colour Scale ── */
+  --navy:        #0B2245;
+  --blue-dark:   #0F3460;
+  --blue-mid:    #1A5FA8;
+  --blue:        #2174CC;
+  --accent:      #2E8FE8;
+  --accent-dim:  #1A6FC4;
+  --accent-dim2: rgba(46, 143, 232, 0.18);
+  --accent-dim3: rgba(46, 143, 232, 0.30);
+  --sky:         #4AAEF5;
+  --sky-l:       #A8D8F8;
+  --sky-p:       #D6EDFB;
+  --sky-u:       #EDF6FE;
+
+  /* ── Backgrounds ── */
+  --bg:       #0B2245;
+  --bg-card:  #0F3460;
+  --bg-card2: #1A5FA8;
+  --bg-card3: #153d72;
+  --bg-active: rgba(46, 143, 232, 0.15);
+
+  /* ── Text ── */
+  --text:   #C8DCEF;
+  --text80: rgba(200, 220, 239, 0.80);
+  --white:  #FFFFFF;
+
+  /* ── Borders ── */
+  --border:        1px solid rgba(46, 143, 232, 0.22);
+  --border-btn:    1px solid rgba(255, 255, 255, 0.28);
+  --border-badge:  1px solid rgba(255, 255, 255, 0.18);
+
+  /* ── Radius ── */
+  --border-radius:    12px;
+  --border-radius-s:   8px;
+  --border-radius-xs:  4px;
+
+  /* ── Typography ── */
+  --font-head: 'Circe', sans-serif;
+  --font-body: 'Circe', sans-serif;
+
+  /* ── Spacing ── */
+  --sp1: 4px;  --sp2: 8px;  --sp3: 12px; --sp4: 16px;
+  --sp5: 24px; --sp6: 32px; --sp7: 48px; --sp8: 64px;
+}

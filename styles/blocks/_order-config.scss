@@ -1,0 +1,413 @@
+/* ════════════════════════════════════════
+   ORDER-CONFIG PAGE — _order-config.scss
+   Страница выбора комплектации
+   ════════════════════════════════════════ */
+
+/* ══ HERO ══ */
+.ocfg-hero {
+  background: var(--bg-card);
+  padding: 96px 40px 24px;
+  text-align: center;
+}
+
+.ocfg-hero__title {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.05;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+
+  span { color: var(--accent); }
+}
+
+.ocfg-hero__sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.5;
+
+  span { color: var(--accent); }
+}
+
+/* ══ ТЕЛО (сайдбар + контент) ══ */
+.ocfg-body {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 60vh;
+  background: var(--bg);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ══ САЙДБАР ══ */
+.ocfg-sidebar {
+  padding: 24px 12px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background: var(--bg-card);
+  position: sticky;
+  top: 330px;
+  margin-left: 40px;
+  height: fit-content;
+}
+
+
+
+.ocfg-sidebar__heading {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+
+  &.is-open .ocfg-sidebar__chevron { transform: rotate(180deg); }
+}
+
+.ocfg-sidebar__chevron {
+  color: var(--accent);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+/* Список моделей */
+.ocfg-model-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ocfg-model-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: 10px 10px;
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border 0.2s ease;
+  user-select: none;
+
+  &:hover { background: var(--bg-card2); }
+
+  &.is-active {
+    background: var(--bg-card2);
+    border: var(--border);
+
+    .ocfg-model-item__radio { border-color: var(--accent); }
+    .ocfg-model-item__radio::after { opacity: 1; }
+    .ocfg-model-item__img { opacity: 1; }
+  }
+}
+
+/* Радио-кружок */
+.ocfg-model-item__radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+
+  &::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+}
+
+/* Превью модели */
+.ocfg-model-item__img {
+  width: 80px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.ocfg-model-item:hover .ocfg-model-item__img { opacity: 1; }
+
+.ocfg-model-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ocfg-model-item__name {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1;
+}
+
+.ocfg-model-item__area {
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--text);
+}
+
+/* ══ КОНТЕНТ ══ */
+.ocfg-content { 
+  padding: 100px 40px 0; 
+}
+
+/* Строка статуса */
+.ocfg-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+
+.ocfg-count {
+  font-size: 16px;
+  color: var(--white);
+
+  strong { 
+    color: var(--text80); 
+    font-weight: 400; 
+  }
+}
+
+/* .ocfg-sort {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  color: var(--text80);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+
+  &:hover { color: var(--white); }
+}
+
+.ocfg-sort__val { color: var(--accent); font-weight: 600; } */
+
+/* Сетка карточек */
+.ocfg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Карточка комплектации ── */
+.ocfg-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  
+  text-decoration: none;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+
+    .ocfg-card__img-wrap img { 
+      transform: scale(1.04); 
+    }
+
+    .ocfg-card__badge {
+      color: var(--white);
+    }
+  }
+}
+
+/* Обёртка картинки с бейджем */
+.ocfg-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+
+  img {
+    width: 100%;
+    aspect-ratio: 5/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+}
+
+.ocfg-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+
+/* Тело карточки */
+.ocfg-card__body {
+  padding: 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.ocfg-card__model {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--font-head);
+  color: var(--white);
+  line-height: 1;
+}
+
+.ocfg-card__level {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.ocfg-card__spec {
+  font-size: 14px;
+  color: var(--text80);
+  margin-top: 2px;
+}
+
+/* Список включённого */
+.ocfg-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  li {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.45;
+    padding-left: 14px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+  }
+}
+
+/* Подвал карточки */
+.ocfg-card__foot {
+  padding: 16px 20px 20px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.ocfg-card__price {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+}
+
+.ocfg-card__price-label {
+  font-size: 12px;
+  color: var(--text80);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.ocfg-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 24px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--border-radius-s);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease, background 0.3s ease;
+  flex-shrink: 0;
+
+  &:hover { 
+    background: var(--accent-dim); 
+    color: var(--white);
+  }
+}
+
+/* ══ АДАПТИВ ══ */
+@media (max-width: 1650px) {
+  .ocfg-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1300px) {
+  .ocfg-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1023px) {
+  .ocfg-body { grid-template-columns: 1fr; }
+
+  .ocfg-sidebar {
+    position: static;
+    padding: 24px;
+    margin: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .ocfg-model-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ocfg-model-item { flex: 0 0 auto; }
+  .ocfg-content { padding: 24px 24px 48px; }
+}
+
+@media (max-width: 767px) {
+  .ocfg-hero { padding: 56px 24px 40px; }
+  .ocfg-grid { grid-template-columns: 1fr; }
+  .ocfg-model-item__img { display: none; }
+}

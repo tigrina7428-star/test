@@ -1,0 +1,244 @@
+/* ═══════════════════════════════════════════════════════
+   СЕКЦИЯ «ГАБАРИТНЫЕ РАЗМЕРЫ» — страница specs.html
+   Блок: .specs-dims
+   ═══════════════════════════════════════════════════════ */
+
+.specs-dims {
+  background: var(--bg);
+  padding: 112px 80px 56px;
+
+  .section-tag,
+  .section-title {
+    text-align: center;
+  }
+
+  .section-title {
+    margin-bottom: 72px;
+  }
+
+  // ── Сетка трёх видов: спереди / сбоку (главный) / сзади ──
+  &__views {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 1fr;
+    gap: 12px;
+    align-items: end;
+    margin-bottom: 2px;
+  }
+
+  &__view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    
+
+    // Центральный вид — выше остальных
+    &--main {
+      .specs-dims__img-wrap {
+        min-height: 320px;
+      }
+    }
+  }
+
+  // ── Обёртка изображения с линиями размеров ──
+  &__img-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 220px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(77, 144, 254, 0.12);
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Горизонтальная линия размера снизу
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      left: 12px;
+      right: 12px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    // Левый вертикальный тик
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -65px;
+      left: 12px;
+      width: 1px;
+      height: 12px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 5/3;
+    display: block;
+    padding: 24px;
+    min-height: 220px;
+  }
+
+  // ── Подписи размеров ──
+  &__ann {
+    position: absolute;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    white-space: nowrap;
+
+    // Снизу по центру (ширина)
+    &--bottom {
+      bottom: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    // Второй размер снизу (светлее, мельче)
+    &--bottom2 {
+      bottom: -80px;
+      left: 60%;
+      transform: translateX(-50%);
+      color: rgba(100, 157, 234, 0.55);
+      font-size: 10px;
+    }
+
+    // Слева вертикально (высота конька)
+    &--left {
+      left: -48px;
+      top: 20%;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    // Слева вертикально — низ (высота стены)
+    &--left-low {
+      left: -48px;
+      top: 55%;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: rgba(100, 157, 234, 0.55);
+      font-size: 10px;
+    }
+
+    // Справа вертикально
+    &--right {
+      right: -48px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  // ── Угловые бейджи (вид сбоку — уклоны кровли) ──
+  &__angle {
+    position: absolute;
+    bottom: 16px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--accent);
+    opacity: 0.7;
+
+    &--left   { left: 10%; }
+    &--center { left: 50%; transform: translateX(-50%); }
+    &--right  { right: 10%; }
+  }
+
+  // ── Подпись вида («Вид спереди» и т.д.) ──
+  &__view-label {
+    width: 100%;
+    background: rgba(44, 99, 172, 0.08);
+    border: 1px solid rgba(77, 144, 254, 0.1);
+    border-top: none;
+    text-align: center;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    
+  }
+
+  // ── Ключевые характеристики под чертежами ──
+  &__specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 80px;
+    gap: 2px;
+  }
+
+  &__spec {
+    text-align: center;
+    padding: 0 24px;
+    border-right: 1px solid rgba(77, 144, 254, 0.12);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__spec-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text80);
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+  }
+
+  &__spec-value {
+    font-family: var(--font-head);
+    font-size: clamp(40px, 5vw, 56px);
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+  }
+}
+
+/* ── Планшет (до 1023px) ─────────────────────────────────── */
+@media (max-width: 1023px) {
+  .specs-dims {
+    padding: 72px 40px 60px;
+
+    &__views {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    // Боковые размерные подписи скрываем — нет места
+    &__ann--left,
+    &__ann--left-low,
+    &__ann--right {
+      display: none;
+    }
+
+    &__specs {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    &__spec {
+      border-right: none;
+    }
+  }
+}
+
+/* ── Мобильный (до 767px) ────────────────────────────────── */
+@media (max-width: 767px) {
+  .specs-dims {
+    padding: 56px 24px 48px;
+
+    &__specs {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+}

@@ -1,0 +1,253 @@
+﻿/* ── NAV ── */
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 24px;
+  height: 64px;
+  background: var(--bg);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(77, 144, 254, 0.15);
+}
+
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-link {
+  padding: 20px 0;
+  border-bottom: 1px solid transparent;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 400;
+  transition: color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
+  line-height: 1;
+}
+
+.nav-link:hover {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+.nav-link.nav-link-active {
+  color: var(--white);
+  border-bottom-color: var(--accent);
+}
+
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-right a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-right a:hover {
+  color: var(--white);
+}
+
+/* .nav-right a:first-child {
+  height: 100%;
+  padding: 24px 0;
+  margin-right: 19px;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-right a:first-child:hover {
+  border-bottom: 1px solid var(--white);
+} */
+
+.sales-territory {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent; 
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sales-territory svg {
+  path {
+    stroke: var(--accent);
+  transition: stroke 0.3s ease-in-out;
+  }
+}
+
+.sales-territory:hover {
+  background-color: var(--accent);
+
+  svg {
+    path {
+      stroke: var(--white);
+    }
+  }
+}
+
+.sales-territory:active {
+  transform: scale(0.9);
+}
+
+.support-float-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent; 
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.support-float-btn svg {
+  stroke: var(--accent);
+  transition: all 0.3s ease-in-out;
+}
+
+
+.support-float-btn:hover {
+  background-color: var(--accent);
+
+  svg {
+    stroke: var(--white);
+  }
+}
+
+.support-float-btn:active {
+  transform: scale(0.9);
+}
+
+.lk-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.lk-button svg {
+  stroke: var(--accent);
+  transition: all 0.3s ease-in-out;
+}
+
+.lk-button:hover {
+  background-color: var(--accent);
+
+  svg {
+    stroke: var(--white);
+  }
+}
+
+/* На мобилках можно скрыть текст и оставить только иконку */
+@media (max-width: 480px) {
+  .lk-button span {
+    display: none;
+  }
+}
+
+
+
+
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: var(--yellow);
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.cta-strip-text h2 {
+  font-family: var(--font-head);
+  font-size: clamp(32px, 4vw, 56px);
+  color: var(--black);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.cta-strip-text p {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cta-strip-btns {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-dark {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 16px 40px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.btn-dark:hover {
+  background: #222;
+}
+
+.btn-dark-outline {
+  background: transparent;
+  color: var(--black);
+  border: 2px solid var(--black);
+  padding: 16px 40px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+.btn-dark-outline:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+
+
+
+

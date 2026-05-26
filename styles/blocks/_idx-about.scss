@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════
+   СЕКЦИЯ «О ПРОЕКТЕ» — главная страница (index.html)
+   Блок: .idx-about
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Обёртка секции ──────────────────────────────────────
+   Наследует padding от .section (56px 160px),
+   нижний отступ чуть больше для визуального баланса      */
+.idx-about {
+  padding-bottom: 80px;
+
+  &__section {
+    padding: 56px 280px;
+  }
+
+  /* ── Карточка: два столбца 50/50 ──────────────────────
+     Левый — фото, правый — текст.
+     min-height задаёт минимальную высоту всего блока      */
+  &__card {
+    
+    height: 440px;
+    overflow: hidden;
+    border: 1px solid rgba(77, 144, 254, 0.1); /* тонкая синяя рамка */
+    border-radius: var(--border-radius);
+  }
+
+  /* ── Колонка с фотографией ────────────────────────────
+     overflow: hidden нужен чтобы zoom при ховере
+     не вылезал за границы карточки                        */
+  &__img-col {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Само фото ────────────────────────────────────────
+     object-fit: cover — заполняет колонку без искажений.
+     transition — плавное увеличение при наведении         */
+  &__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease-in-out;
+    filter: brightness(0.5);
+  }
+
+  /* Zoom-эффект на фото при наведении на всю карточку */
+  &__card:hover &__img {
+    transform: scale(1.03);
+  }
+
+  /* ── Колонка с текстом ────────────────────────────────
+     Тёмный фон (--bg-card), флекс по вертикали,
+     контент выровнен по центру. gap — расстояние
+     между тегом, заголовком и кнопкой                    */
+  &__text-col {
+    position: absolute;
+    top: 20%;
+    right: 2%;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0;
+    gap: 40px;
+  }
+
+  /* ── Заголовок ────────────────────────────────────────
+     Крупный, жирный, uppercase.
+     clamp(min, preferred, max) — адаптивный размер шрифта:
+       44px   — минимум (маленький экран)
+       4.8vw  — fluid (масштабируется с шириной окна)
+       72px   — максимум (большой экран)
+     line-height: 0.95 — строки вплотную (как в дизайне)  */
+  &__title {
+    font-family: var(--font-head);
+    font-size: clamp(40px, 5vw, 48px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  /* ── Кнопка «Подробнее» ───────────────────────────────
+     Outline-стиль (прозрачный фон, рамка).
+     width: fit-content — кнопка по ширине текста,
+     не растягивается на всю колонку.
+     ::after добавляет стрелку → без лишнего HTML-тега     */
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    transition:
+      border-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+
+    &::after {
+      content: '→';
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--white);
+    }
+  }
+}
+
+/* ── Планшет (до 1023px) ──────────────────────────────────
+   Карточка переходит в одну колонку: сначала фото,
+   потом текст под ним                                      */
+@media (max-width: 1023px) {
+  .idx-about {
+    &__card {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    &__img-col {
+      min-height: 340px; /* фиксированная высота фото-блока */
+    }
+
+    &__text-col {
+      padding: 48px 40px;
+      gap: 32px;
+    }
+  }
+}
+
+/* ── Мобильный (до 767px) ─────────────────────────────────
+   Уменьшаем отступы секции и текстовой колонки,
+   шрифт заголовка чуть крупнее относительно экрана        */
+@media (max-width: 767px) {
+  .idx-about {
+    padding: 40px 24px 56px;
+
+    &__img-col {
+      min-height: 260px;
+    }
+
+    &__text-col {
+      padding: 40px 24px;
+      gap: 28px;
+    }
+
+    &__title {
+      font-size: clamp(40px, 10vw, 56px);
+    }
+  }
+}

@@ -1,0 +1,708 @@
+﻿
+
+// ── Hero ──────────────────────────────────
+.offer-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+  }
+
+  &__overlay {
+    position: absolute;
+   /*  inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 25, 45, 0.35) 0%,
+      rgba(10, 25, 45, 0.15) 100%
+    ); */
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  &__title {
+    margin-bottom: 44px;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// ── Configurator (accordion) ───────────────
+.offer-config {
+  background: var(--bg-card);
+  padding: 80px;
+
+  &__header {
+    margin-bottom: 52px;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  &__accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+// Step item
+.offer-step {
+  background: var(--bg);
+  border: 1px solid rgba(77, 144, 254, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease-in-out;
+
+  &.is-open {
+    border-color: rgba(77, 144, 254, 0.45);
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: rgba(77, 144, 254, 0.04);
+    }
+  }
+
+  &__num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(77, 144, 254, 0.1);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+
+    .offer-step.is-open & {
+      background: var(--accent);
+      color: var(--white);
+    }
+  }
+
+  &__label {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+  }
+
+  &__value {
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    width: 18px;
+    height: 18px;
+    color: var(--text80);
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+
+    .offer-step.is-open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__body {
+    display: none;
+    padding: 4px 24px 24px;
+
+    .offer-step.is-open & {
+      display: block;
+    }
+  }
+
+  // Model options grid inside step
+  &__models {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+// Model option card inside accordion
+.offer-model-opt {
+  border: 1px solid rgba(77, 144, 254, 0.2);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:hover {
+    border-color: rgba(77, 144, 254, 0.5);
+    background: rgba(77, 144, 254, 0.05);
+    color: var(--white);
+
+    .offer-model-opt__name {
+      color: var(--white);
+    }
+  }
+
+
+  &__name {
+    font-size: 20px;
+    font-weight: 600;
+    
+    margin-bottom: 4px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  
+  &.is-selected {
+    border-color: var(--accent);
+    color: var(--white);
+    background: rgba(77, 144, 254, 0.1);
+  }
+
+  &__sub {
+    font-size: 12px;
+    color: var(--text80);
+    line-height: 1.4;
+  }
+
+  &__price {
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+}
+
+// Select field inside step
+.offer-step-select {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid rgba(77, 144, 254, 0.2);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  padding: 13px 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+
+  &:focus {
+    border-color: var(--accent);
+  }
+}
+
+// Extras checkboxes inside step
+.offer-extras-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.offer-extra-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(77, 144, 254, 0.15);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &:hover {
+    border-color: rgba(77, 144, 254, 0.4);
+    color: var(--white);
+  }
+
+  &.is-checked {
+    border-color: var(--accent);
+    background: rgba(77, 144, 254, 0.08);
+    color: var(--white);
+  }
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  &__check {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid rgba(77, 144, 254, 0.3);
+    
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: transparent;
+    transition: all 0.3s ease-in-out;
+
+    .offer-extra-opt.is-checked & {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    
+    flex: 1;
+    line-height: 1.35;
+  }
+
+  &__price {
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+}
+
+// Financing options in step
+.offer-fin-opts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.offer-fin-opt {
+  border: 1px solid rgba(77, 144, 254, 0.15);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:hover {
+    border-color: rgba(77, 144, 254, 0.4);
+  }
+
+  &.is-selected {
+    border-color: var(--accent);
+    background: rgba(77, 144, 254, 0.1);
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  &__detail {
+    font-size: 11px;
+    color: var(--text80);
+  }
+}
+
+// ── Preview panel (right side) ─────────────
+.offer-preview {
+  background: var(--bg);
+  border: 1px solid rgba(77, 144, 254, 0.15);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: sticky;
+  top: 72px;
+
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(77, 144, 254, 0.15);
+  }
+
+  &__tab {
+    flex: 1;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text80);
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 6px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+    &.is-active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    &:hover {
+      color: var(--white);
+    }
+  }
+
+  &__visual {
+    background: var(--bg-card2);
+    padding: 28px 20px;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  &__price-wrap {
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__price-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text80);
+    margin-bottom: 6px;
+  }
+
+  &__price-val {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  &__cta {
+    display: block;
+    width: 100%;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    padding: 18px 16px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    
+    
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: var(--accent-dim);
+    }
+  }
+}
+
+// ── Financing section ──────────────────────
+.offer-fin-section {
+  background: var(--bg-card);
+  padding: 80px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 52px;
+  }
+}
+
+.offer-fin-card {
+  background: var(--bg);
+  border: 1px solid rgba(77, 144, 254, 0.15);
+  border-radius: var(--border-radius);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:hover {
+    border-color: rgba(77, 144, 254, 0.45);
+    background: var(--bg-card2);
+  }
+
+  &__icon {
+    font-size: 40px;
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  &__text {
+    font-size: 13px;
+    color: var(--text80);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  &__link {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--white);
+    }
+  }
+}
+
+// ── Contact section ────────────────────────
+.offer-contact {
+  background: var(--bg);
+  padding: 80px;
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  &__title {
+    
+    margin-bottom: 44px;
+  }
+
+  &__info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.offer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(77, 144, 254, 0.1);
+    border: 1px solid rgba(77, 144, 254, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  &__label {
+    font-size: 10px;
+    color: var(--text80);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  &__value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+}
+
+// Contact form
+.offer-form {
+  &__note {
+    font-size: 13px;
+    color: var(--text80);
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+.offer-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text80);
+  }
+
+  input,
+  select,
+  textarea {
+    background: var(--bg-card);
+    border: 1px solid rgba(77, 144, 254, 0.2);
+    border-radius: var(--border-radius-s);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 13px 16px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.3s ease-in-out;
+
+    &:focus {
+      border-color: var(--accent);
+    }
+
+    &::placeholder {
+      color: rgba(202, 212, 229, 0.4);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 84px;
+    line-height: 1.55;
+  }
+}
+
+.offer-submit {
+  width: 100%;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 18px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: var(--border-radius-s);
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--accent-dim);
+  }
+}
+
+// ── Responsive ────────────────────────────
+@media (max-width: 1200px) {
+  .offer-config {
+    padding: 60px 40px;
+
+    &__layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .offer-preview {
+    position: static;
+  }
+
+  .offer-step__models {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .offer-fin-section {
+    padding: 60px 40px;
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .offer-contact {
+    padding: 60px 40px;
+
+    &__layout {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .offer-hero {
+    &__title {
+      font-size: 34px;
+    }
+  }
+
+  .offer-config {
+    padding: 40px 20px;
+  }
+
+  .offer-step {
+    &__models {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .offer-extras-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-fin-opts {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-fin-section {
+    padding: 40px 20px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .offer-contact {
+    padding: 40px 20px;
+  }
+}

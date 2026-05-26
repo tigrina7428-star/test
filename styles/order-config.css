@@ -1,0 +1,366 @@
+/* ════════════════════════════════════════
+   ORDER-CONFIG PAGE — order-config.css
+   Страница выбора комплектации
+   Использует переменные из styles.css
+   ════════════════════════════════════════ */
+
+/* ── Fade-in ── */
+#page-content {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+#page-content.page-visible { opacity: 1; }
+
+/* ══ HERO ══ */
+.ocfg-hero {
+  background: var(--bg);
+  padding: 72px 40px 56px;
+  text-align: center;
+}
+.ocfg-hero__title {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+.ocfg-hero__title span { color: var(--accent); }
+.ocfg-hero__sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text);
+  margin: 0;
+}
+.ocfg-hero__sub span { color: var(--accent); }
+
+/* ══ ТЕЛО (сайдбар + контент) ══ */
+.ocfg-body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 60vh;
+  background: var(--bg);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ══ САЙДБАР ══ */
+.ocfg-sidebar {
+  padding: 40px 0 40px 40px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: sticky;
+  top: 64px;
+  height: fit-content;
+}
+.ocfg-sidebar__section { margin-bottom: 36px; }
+.ocfg-sidebar__heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+.ocfg-sidebar__chevron {
+  color: var(--accent);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.ocfg-sidebar__heading.is-open .ocfg-sidebar__chevron {
+  transform: rotate(180deg);
+}
+
+/* Список моделей */
+.ocfg-model-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ocfg-model-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  user-select: none;
+}
+.ocfg-model-item:hover { background: var(--bg-card); }
+.ocfg-model-item.is-active {
+  background: var(--bg-card);
+  border-color: rgba(46, 143, 232, 0.25);
+}
+
+/* Радио-кружок */
+.ocfg-model-item__radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+.ocfg-model-item.is-active .ocfg-model-item__radio {
+  border-color: var(--accent);
+}
+.ocfg-model-item__radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.ocfg-model-item.is-active .ocfg-model-item__radio::after { opacity: 1; }
+
+/* Превью модели */
+.ocfg-model-item__img {
+  width: 52px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.ocfg-model-item.is-active .ocfg-model-item__img,
+.ocfg-model-item:hover .ocfg-model-item__img { opacity: 1; }
+
+.ocfg-model-item__info { display: flex; flex-direction: column; gap: 2px; }
+.ocfg-model-item__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+}
+.ocfg-model-item__area {
+  font-size: 11px;
+  color: var(--text80);
+}
+
+/* ══ КОНТЕНТ ══ */
+.ocfg-content { padding: 32px 40px 64px; }
+
+/* Строка статуса */
+.ocfg-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+.ocfg-count {
+  font-size: 15px;
+  color: var(--text);
+}
+.ocfg-count strong {
+  color: var(--white);
+  font-weight: 600;
+}
+.ocfg-sort {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text80);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+.ocfg-sort:hover { color: var(--white); }
+.ocfg-sort__val { color: var(--accent); font-weight: 600; }
+
+/* Сетка карточек */
+.ocfg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Карточка комплектации ── */
+.ocfg-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--border-radius-s);
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ocfg-card:hover {
+  border-color: rgba(46, 143, 232, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* Бейдж поверх картинки */
+.ocfg-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+.ocfg-card__img-wrap img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.ocfg-card:hover .ocfg-card__img-wrap img { transform: scale(1.04); }
+
+.ocfg-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+
+/* Тело карточки */
+.ocfg-card__body {
+  padding: 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.ocfg-card__model {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-head);
+  color: var(--white);
+  line-height: 1;
+}
+.ocfg-card__level {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ocfg-card__spec {
+  font-size: 12px;
+  color: var(--text80);
+  margin-top: 2px;
+}
+
+/* Список включённого */
+.ocfg-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ocfg-card__list li {
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.45;
+  padding-left: 14px;
+  position: relative;
+}
+.ocfg-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Подвал карточки */
+.ocfg-card__foot {
+  padding: 16px 20px 20px;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 16px;
+}
+.ocfg-card__price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+.ocfg-card__price-label {
+  font-size: 10px;
+  color: var(--text80);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.ocfg-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px 8px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius-s);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+}
+.ocfg-card__btn:hover { background: var(--accent-dim); }
+
+/* ══ АДАПТИВ ══ */
+@media (max-width: 1300px) {
+  .ocfg-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1023px) {
+  .ocfg-body { grid-template-columns: 1fr; }
+  .ocfg-sidebar {
+    position: static;
+    padding: 24px 24px 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ocfg-model-list { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .ocfg-model-item { flex: 0 0 auto; }
+  .ocfg-content { padding: 24px 24px 48px; }
+}
+
+@media (max-width: 767px) {
+  .ocfg-hero { padding: 56px 24px 40px; }
+  .ocfg-grid { grid-template-columns: 1fr; }
+  .ocfg-model-item__img { display: none; }
+}

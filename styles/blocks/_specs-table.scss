@@ -1,0 +1,319 @@
+/* ═══════════════════════════════════════════════════════
+   СЕКЦИЯ «ТАБЛИЦА ТЕХНИЧЕСКИХ ХАРАКТЕРИСТИК» — specs.html
+   Блок: .specs-table
+   ═══════════════════════════════════════════════════════ */
+
+.specs-table {
+  background: var(--bg);
+  padding: 80px 80px 100px;
+
+  // ── Строка: заголовок + тоггл «Показать отличия» ──
+  &__title-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 40px;
+  }
+
+  // ── Заголовок секции ──
+  &__title {
+    margin: 0 0 24px;
+  }
+
+  // ── Строки, скрытые фильтром «только отличия» ──
+  &__row--hidden {
+    display: none !important;
+  }
+
+  // ── Оболочка всей таблицы ──
+  &__wrap {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  // ── Шапка таблицы: выбор конфигурации для каждой колонки ──
+  &__head {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: var(--bg-card2);
+    
+    position: sticky;
+    top: 108px; // хедер 64px + субнав ~48px
+    z-index: 10;
+  }
+
+  &__head-param {
+    padding: 16px 20px;
+    /* border-right: 1px solid rgba(77, 144, 254, 0.15); */
+  }
+
+  &__head-col {
+    padding: 16px 20px;
+    /* border-left: 1px solid rgba(77, 144, 254, 0.15); */
+  }
+
+  // ── Кастомный select выбора конфигурации ──
+  &__sel-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__sel {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    padding-right: 20px;
+    outline: none;
+    line-height: 1.4;
+
+    option {
+      background: var(--bg-card);
+      color: var(--white);
+    }
+  }
+
+  &__sel-arrow {
+    position: absolute;
+    right: 0;
+    pointer-events: none;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  // ── Строка таблицы: параметр + 2 значения ──
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    border-bottom: 1px solid rgba(77, 144, 254, 0.07);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    // При наведении — лёгкая подсветка
+    &:hover {
+      background: rgba(77, 144, 254, 0.03);
+    }
+  }
+
+  // ── Ячейка с названием параметра ──
+  &__param {
+    padding: 11px 20px;
+    font-size: 16px;
+    color: var(--text);
+    border-right: 1px solid rgba(77, 144, 254, 0.07);
+    line-height: 1.45;
+  }
+
+  // ── Ячейка со значением ──
+  &__val {
+    padding: 11px 20px;
+    font-size: 16px;
+    color: var(--white);
+    border-left: 1px solid rgba(77, 144, 254, 0.07);
+    line-height: 1.45;
+
+    // Значение отличается от соседней колонки — акцентная подсветка
+    &.is-diff {
+      color: var(--accent);
+      background: rgba(77, 144, 254, 0.05);
+    }
+  }
+
+  // ── Аккордион-группа ──
+  &__group {
+    border-bottom: 1px solid rgba(77, 144, 254, 0.15);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  // ── Заголовок группы (кнопка раскрытия) ──
+  &__grp-hd {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: var(--bg-card2);
+    border: none;
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+    gap: 12px;
+
+    &:hover {
+      background: rgba(77, 144, 254, 0.12);
+      color: var(--white);
+    }
+  }
+
+  // ── Иконка стрелки (вращается при открытии) ──
+  &__grp-arrow {
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+    color: inherit;
+  }
+
+  // ── Тело группы — скрыто по умолчанию ──
+  &__grp-bd {
+    display: none;
+  }
+
+  // ── Открытое состояние группы ──
+  &__group.is-open {
+    .specs-table__grp-arrow {
+      transform: rotate(180deg);
+    }
+
+    .specs-table__grp-bd {
+      display: block;
+    }
+  }
+
+  // ── Строка-одиночка (вне аккордиона) ──
+  &__row--standalone {
+    background: var(--bg-card);
+    border-bottom: var(--border);
+  }
+}
+
+/* ── Тоггл «Показать отличия» ───────────────────────────── */
+.specs-diff-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .specs-diff-toggle__track {
+      background: var(--accent);
+      border-color: var(--accent);
+
+      .specs-diff-toggle__knob {
+        transform: translateX(18px);
+        background: var(--white);
+      }
+    }
+  }
+
+  &__track {
+    width: 38px;
+    height: 20px;
+    border-radius: 10px;
+    background: rgba(77, 144, 254, 0.18);
+    border: 1px solid rgba(77, 144, 254, 0.3);
+    position: relative;
+    flex-shrink: 0;
+    transition:
+      background 0.3s ease-in-out,
+      border-color 0.3s ease-in-out;
+  }
+
+  &__knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--text80);
+    transition:
+      transform 0.3s ease-in-out,
+      background 0.3s ease-in-out;
+  }
+
+  &__label {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--text);
+    user-select: none;
+    white-space: nowrap;
+  }
+}
+
+/* ── Планшет (до 1023px) ─────────────────────────────────── */
+@media (max-width: 1023px) {
+  .specs-table {
+    padding: 56px 40px 72px;
+
+    &__head {
+      top: 56px; // только хедер
+    }
+  }
+}
+
+/* ── Мобильный (до 767px) ────────────────────────────────── */
+@media (max-width: 767px) {
+  .specs-diff-toggle {
+    &__label {
+      font-size: 13px;
+    }
+  }
+
+  .specs-table {
+    padding: 40px 0 56px;
+
+    &__wrap {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+
+    &__head {
+      top: 56px;
+      grid-template-columns: 0 1fr 1fr; // параметр скрываем в шапке
+    }
+
+    &__head-param {
+      display: none;
+    }
+
+    &__row {
+      grid-template-columns: 1.2fr 1fr 1fr;
+    }
+
+    &__param {
+      font-size: 12px;
+      padding: 10px 12px;
+    }
+
+    &__val {
+      font-size: 12px;
+      padding: 10px 12px;
+    }
+
+    &__grp-hd {
+      font-size: 13px;
+      padding: 12px 16px;
+    }
+
+    &__sel {
+      font-size: 12px;
+    }
+  }
+}

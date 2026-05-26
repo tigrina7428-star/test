@@ -1,0 +1,175 @@
+﻿/* ── MODELS ── */
+#models {
+  background: var(--bg);
+}
+
+.models-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+}
+
+.models-header p {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.models-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  /* background: rgba(77, 144, 254, 0.1); */
+}
+
+.model-card {
+  display: block;
+  background: var(--bg-card);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease-in-out,
+    background 0.3s ease-in-out;
+  position: relative;
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+.model-card:hover {
+  background: var(--bg-card2);
+  transform: translateY(-2px);
+  z-index: 2;
+}
+
+.model-card:hover .model-price {
+  color: var(--white);
+}
+
+.model-card-top {
+  overflow: hidden;
+  
+  position: relative;
+}
+
+
+.model-card-img {
+  width: 100%;
+  aspect-ratio: 5/3;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.75) saturate(0.8);
+  transition:
+    filter 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+.model-card:hover .model-card-img {
+  filter: brightness(0.95) saturate(1);
+  transform: scale(1.04);
+}
+
+.model-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  border: var(--border-badge);
+  border-radius: var(--border-radius-s);
+  background: rgba(77, 144, 254, 0.12);
+  padding-block: 10px;
+  padding-inline: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.model-card:hover .model-badge {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+
+.model-card-body {
+  padding: 28px;
+  /* border-top: 1px solid rgba(77, 144, 254, 0.15); */
+}
+
+.model-name {
+  font-family: var(--font-head);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.model-tagline {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.1px;
+  margin-bottom: 24px;
+}
+
+/* ── SPEC CARDS — minimal technical look ── */
+.model-specs {
+  display: grid;
+  grid-template-columns: 1fr;
+  
+  /* border: 1px solid rgba(77, 144, 254, 0.1); */
+  /* background: rgba(77, 144, 254, 0.1); */
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--border);
+  /* background: var(--bg); */
+  padding: 8px 0;
+}
+.spec-label {
+  font-size: 16px;
+  color: var(--text80);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.spec-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+}
+
+.model-price {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text80);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding-top: 24px;
+  transition: color 0.3s ease-in-out;
+}
+
+.model-price span {
+  color: var(--accent);
+}
+
+.model-price small {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text80);
+  font-weight: 400;
+  display: block;
+}
+
+.model-actions {
+  display: flex;
+  gap: 8px;
+  
+}
+
+.btn-sm {
+  font-size: 16px;
+  width: 50%;
+  padding: 14px 24px;
+}

@@ -1,0 +1,96 @@
+﻿/* ── BREADCRUMBS ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+
+  &__item {
+    color: var(--text80);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--white);
+    }
+
+    // Последний пункт — акцентный цвет, не кликабельный
+    &--active {
+      color: var(--accent);
+      pointer-events: none;
+    }
+  }
+
+  &__sep {
+    color: var(--text80);
+    opacity: 0.4;
+    user-select: none;
+    font-size: 10px;
+  }
+}
+
+// ── На страницах с тёмным хиро — крошки поверх фото ──
+// Используется внутри .prj-hero на project.html
+.prj-hero .breadcrumb {
+  position: absolute;
+  top: 128px;
+  left: 160px;
+  z-index: 2;
+}
+
+.equip-hero .breadcrumb {
+  position: absolute;
+  top: 128px;
+  left: 160px;
+  z-index: 2;
+}
+
+.specs-hero .breadcrumb {
+  position: absolute;
+  top: 128px;
+  left: 160px;
+  z-index: 2;
+}
+
+.compl-hero .breadcrumb {
+  position: absolute;
+  top: 128px;
+  left: 160px;
+  z-index: 2;
+}
+
+.offer-hero .breadcrumb {
+  position: absolute;
+  top: 84px;
+  left: 160px;
+  z-index: 2;
+}
+
+.compl-compare__top .breadcrumb {
+  position: absolute;
+  top: 128px;
+  left: 160px;
+  z-index: 2;
+}
+
+
+// ── На остальных страницах — полоска сразу под хедером ──
+.breadcrumb-bar {
+  
+  background: transparent;
+}
+
+@media (max-width: 767px) {
+  .prj-hero .breadcrumb {
+    top: 112px;
+    left: 160px;
+  }
+
+  .breadcrumb-bar {
+    padding: 80px 16px 0;
+  }
+}

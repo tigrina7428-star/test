@@ -1,0 +1,500 @@
+/* ════════════════════════════════════════
+   CONFIGURATOR 3D — _configurator3d.scss
+   ════════════════════════════════════════ */
+
+/* ══ STEPPER ══ */
+.cfg3d-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  height: 56px;
+  background: var(--bg-card);
+  border-bottom: var(--border);
+  gap: 0;
+  position: sticky;
+  top: 64px;
+  z-index: 50;
+}
+
+.cfg3d-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 0 4px;
+  cursor: default;
+
+  &--done {
+    cursor: pointer;
+    .cfg3d-step__num { background: transparent; border-color: var(--accent); color: var(--accent); }
+    .cfg3d-step__label { color: var(--text80); }
+    &:hover .cfg3d-step__label { color: var(--white); }
+  }
+
+  &--active {
+    .cfg3d-step__num { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .cfg3d-step__label { color: var(--white); font-weight: 600; }
+  }
+}
+
+.cfg3d-step__num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.cfg3d-step__label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.cfg3d-step-sep {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  flex-shrink: 0;
+  margin: 0 8px;
+}
+
+/* ══ ТЕЛО ══ */
+.cfg3d-body {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: calc(100vh - 120px);
+  background: var(--bg);
+}
+
+/* ══ САЙДБАР ══ */
+.cfg3d-sidebar {
+  background: var(--bg-card);
+  border-right: var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 120px;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.cfg3d-sidebar__model {
+  padding: 24px 24px 20px;
+  border-bottom: var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.cfg3d-sidebar__thumb {
+  width: 80px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: var(--border-radius-s);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.cfg3d-sidebar__model-info { display: flex; flex-direction: column; gap: 4px; }
+.cfg3d-sidebar__model-name {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+}
+.cfg3d-sidebar__model-area { font-size: 12px; color: var(--text); }
+
+/* Секции резюме */
+.cfg3d-summary {
+  padding: 20px 24px;
+  border-bottom: var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cfg3d-summary__title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text80);
+  margin-bottom: 2px;
+}
+
+.cfg3d-summary__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cfg3d-summary__key {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.cfg3d-summary__val {
+  font-size: 13px;
+  color: var(--white);
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cfg3d-summary__val--muted {
+  color: var(--text80);
+  font-weight: 400;
+}
+
+/* Итог */
+.cfg3d-sidebar__total {
+  padding: 20px 24px;
+  margin-top: auto;
+  border-top: var(--border);
+}
+
+.cfg3d-sidebar__total-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text80);
+  margin-bottom: 6px;
+}
+
+.cfg3d-sidebar__total-price {
+  font-family: var(--font-head);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.cfg3d-sidebar__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--border-radius-s);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s ease;
+
+  &:hover { background: var(--accent-dim); }
+}
+
+/* ══ ПРАВАЯ ЧАСТЬ ══ */
+.cfg3d-main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Область 3D-вьюера */
+.cfg3d-viewer-area {
+  flex: 1;
+  position: relative;
+  background: var(--bg);
+  min-height: 480px;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  --progress-bar-color: var(--accent);
+  --progress-mask: transparent;
+}
+
+/* Плашка «нет модели» */
+.cfg3d-no-model {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--bg);
+  pointer-events: none;
+
+  &.is-hidden { display: none; }
+}
+
+.cfg3d-no-model__img {
+  width: 100%;
+  max-width: 640px;
+  object-fit: contain;
+  opacity: 0.45;
+}
+
+.cfg3d-no-model__label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text80);
+}
+
+/* Хинт вращения */
+.cfg3d-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text80);
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+
+  &.is-hidden { opacity: 0; }
+}
+
+/* ══ ПАНЕЛЬ УПРАВЛЕНИЯ ══ */
+.cfg3d-controls {
+  background: var(--bg-card);
+  border-top: var(--border);
+  padding: 24px 40px 28px;
+}
+
+/* Табы: Экстерьер / Опции */
+.cfg3d-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: var(--border);
+}
+
+.cfg3d-tab {
+  padding: 10px 20px 9px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text80);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &.is-active {
+    color: var(--white);
+    border-bottom-color: var(--accent);
+  }
+
+  &:hover:not(.is-active) { color: var(--white); }
+}
+
+.cfg3d-tab-panel { display: none; &.is-active { display: block; } }
+
+/* Группа свотчей */
+.cfg3d-swatch-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cfg3d-swatch-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cfg3d-swatch-row__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text80);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.cfg3d-swatch-row__name {
+  font-size: 13px;
+  color: var(--white);
+  min-width: 120px;
+}
+
+.cfg3d-swatches {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cfg3d-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover { transform: scale(1.15); }
+
+  &.is-active {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+}
+
+/* Группа опций */
+.cfg3d-options-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.cfg3d-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  user-select: none;
+
+  &:hover { border-color: rgba(77,144,254,0.3); }
+
+  &.is-active {
+    border-color: var(--accent);
+    background: rgba(77,144,254,0.06);
+
+    .cfg3d-option__check { background: var(--accent); border-color: var(--accent); }
+    .cfg3d-option__check::after { opacity: 1; }
+  }
+}
+
+.cfg3d-option__check {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  margin-top: 1px;
+  position: relative;
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid var(--bg);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+}
+
+.cfg3d-option__body { display: flex; flex-direction: column; gap: 3px; }
+
+.cfg3d-option__title {
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.cfg3d-option__price {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* Тип ворот — radio-кнопки */
+.cfg3d-gate-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cfg3d-gate-btn {
+  padding: 8px 16px;
+  border: var(--border);
+  border-radius: var(--border-radius-s);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+
+  &.is-active {
+    border-color: var(--accent);
+    color: var(--white);
+    background: rgba(77,144,254,0.08);
+  }
+
+  span {
+    font-size: 11px;
+    color: var(--text80);
+    margin-left: 4px;
+  }
+}
+
+/* ══ АДАПТИВ ══ */
+@media (max-width: 1100px) {
+  .cfg3d-body { grid-template-columns: 280px 1fr; }
+  .cfg3d-options-group { grid-template-columns: 1fr; }
+  .cfg3d-controls { padding: 20px 24px 24px; }
+}
+
+@media (max-width: 900px) {
+  .cfg3d-body { grid-template-columns: 1fr; }
+
+  .cfg3d-sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: var(--border);
+  }
+
+  .cfg3d-stepper { overflow-x: auto; justify-content: flex-start; padding: 0 16px; }
+  .cfg3d-step__label { display: none; }
+  .cfg3d-step-sep { width: 24px; }
+}
+
+@media (max-width: 600px) {
+  .cfg3d-swatch-row { flex-wrap: wrap; gap: 10px; }
+  .cfg3d-swatch-row__label { width: 100%; }
+}

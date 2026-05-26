@@ -1,0 +1,82 @@
+﻿/* ── PROCESS ── */
+#process {
+  background: var(--dark);
+  padding: 100px 80px;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 56px;
+  position: relative;
+}
+
+.process-steps::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--dark3);
+  z-index: 0;
+}
+
+.process-step {
+  padding: 0 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ps-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--dark3);
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 22px;
+  transition:
+    border-color 0.3s ease-in-out,
+    background 0.3s ease-in-out;
+}
+
+.process-step:hover .ps-circle {
+  border-color: var(--yellow);
+  background: rgba(245, 184, 0, 0.1);
+}
+
+.ps-num {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  font-family: var(--font-head);
+  font-size: 11px;
+  color: var(--yellow);
+  letter-spacing: 1px;
+}
+
+.ps-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.ps-desc {
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.7;
+}
+.ps-time {
+  margin-top: 10px;
+  display: inline-block;
+  background: var(--dark3);
+  padding: 3px 10px;
+  font-size: 10px;
+  color: var(--yellow);
+  letter-spacing: 1px;
+}

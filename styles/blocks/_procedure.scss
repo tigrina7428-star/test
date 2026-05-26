@@ -1,0 +1,127 @@
+/* ════════════════════════════════════════
+   PROCEDURE PAGE — _procedure.scss
+   Страница «Порядок приобретения»
+   ════════════════════════════════════════ */
+
+/* ══ HERO ══ */
+.prc-hero {
+  background: var(--bg-card);
+  padding: 96px 40px 72px;
+  text-align: center;
+}
+
+.prc-hero__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.prc-hero__title {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.05;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+
+  span { color: var(--accent); }
+}
+
+.prc-hero__sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ══ ЗАГЛУШКА ══ */
+.prc-stub {
+  background: var(--bg);
+  padding: 100px 40px 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.prc-stub__inner {
+  max-width: 560px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.prc-stub__icon {
+  color: var(--accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.prc-stub__label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text80);
+  margin: 0;
+}
+
+.prc-stub__text {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.prc-stub__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.prc-stub__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: var(--border-radius-s);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  border: 1px solid transparent;
+
+  &--primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+
+    &:hover { background: var(--accent-dim); border-color: var(--accent-dim); }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--border);
+
+    &:hover { border-color: var(--accent); color: var(--accent); }
+  }
+}
+
+/* ══ АДАПТИВ ══ */
+@media (max-width: 767px) {
+  .prc-hero { padding: 72px 24px 56px; }
+  .prc-stub { padding: 72px 24px 100px; }
+  .prc-stub__actions { flex-direction: column; width: 100%; }
+  .prc-stub__btn { width: 100%; }
+}

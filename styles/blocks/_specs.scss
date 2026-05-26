@@ -1,0 +1,167 @@
+/* ═══════════════════════════════════════════════════════
+   СТРАНИЦА «ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ»
+   Блок: .specs-subnav, .specs-hero
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Суб-навигация ────────────────────────────────────────
+   Полоса фиксируется сразу под основным хедером (top: 64px)
+   и визуально является его нижней частью — те же цвет и стекло. */
+.specs-subnav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 90;
+
+  background: rgba(15, 43, 69, 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(77, 144, 254, 0.15);
+
+  &__list {
+    display: flex;
+    align-items: stretch;
+    list-style: none;
+    margin: 0;
+    padding: 0 24px;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex-shrink: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px 14px 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+
+    // Подчёркивание-индикатор активного пункта
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 20px;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &.is-active {
+      color: var(--accent);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+// Секции-якоря: отступ сверху = хедер (64px) + субнав (~48px) + зазор
+.specs-subnav-target {
+  scroll-margin-top: 124px;
+}
+
+.specs-section-tag {
+  display: block;
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.specs-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    display: block;
+    position: relative;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 1;
+    padding: 0 80px 72px;
+    top: 250px;
+    left: 300px;
+    max-width: 1300px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    line-height: 1.3;
+    text-transform: initial;
+  }
+}
+
+/* ── Планшет (до 1023px) ─────────────────────────────────── */
+@media (max-width: 1023px) {
+  .specs-hero {
+    &__content {
+      left: 80px;
+    }
+  }
+}
+
+/* ── Мобильный (до 767px) ────────────────────────────────── */
+@media (max-width: 767px) {
+  .specs-subnav {
+    top: 56px;
+
+    &__link {
+      padding: 12px 14px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .specs-subnav-target {
+    scroll-margin-top: 108px;
+  }
+
+  .specs-hero {
+    &__content {
+      left: 0;
+      padding: 0 24px 48px;
+      top: auto;
+      bottom: 0;
+    }
+  }
+}

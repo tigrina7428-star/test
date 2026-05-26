@@ -1,0 +1,251 @@
+﻿/* ── SITE FOOTER ── */
+.site-footer {
+  background: var(--bg);
+  
+  
+  &__disclaimer {
+    padding: 24px 160px;
+    color: var(--text);
+    line-height: 1.3;
+    max-width: 1450px;
+    justify-self: center;
+  }
+  // ── Основная сетка ──
+  &__top {
+    display: grid;
+    grid-template-columns:  repeat(5, 1fr);
+    gap: 0;
+    padding: 112px 160px 56px;
+   
+  }
+
+  // ── Бренд-колонка ──
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 40px;
+    margin-right: 40px;
+  }
+
+  &__logo {
+    display: inline-block;
+    line-height: 0;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__tagline {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  &__cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding: 11px 22px 9px;
+    background: var(--accent);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: var(--accent-dim);
+    }
+  }
+
+  // ── Навигационные колонки ──
+  &__col {
+    padding: 0 24px;
+   
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__col-title {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+   
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      line-height: 1.45;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  // ── Нижняя полоса ──
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 80px;
+    background: var(--bg);
+  }
+
+  &__bottom-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    span {
+      font-size: 12px;
+      color: var(--text80);
+      line-height: 1.55;
+    }
+  }
+
+  &__bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-shrink: 0;
+  }
+
+  &__phone {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  &__requisites {
+    font-size: 11px;
+    color: var(--text80);
+  }
+}
+
+// ── Убираем старый footer-bottom div если остался ──
+.footer-bottom {
+  display: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1200px) {
+  .site-footer {
+    &__top {
+      grid-template-columns: 220px repeat(4, 1fr);
+      padding: 56px 40px 48px;
+      gap: 0;
+    }
+
+    &__brand {
+      padding-right: 28px;
+      margin-right: 28px;
+    }
+
+    &__col {
+      padding: 0 16px;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .site-footer {
+    &__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 32px;
+      padding: 48px 40px;
+    }
+
+    &__brand {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 20px 40px;
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(77, 144, 254, 0.1);
+    }
+
+    &__tagline {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    &__col {
+      border-right: none;
+      padding: 0;
+    }
+
+    &__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 20px 40px;
+    }
+
+    &__bottom-right {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    &__top {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 24px;
+    }
+
+    &__brand {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__bottom {
+      padding: 20px 24px;
+    }
+  }
+}

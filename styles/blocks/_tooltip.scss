@@ -1,0 +1,117 @@
+/* ── TOOLTIP ── */
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: super;
+  cursor: default;
+  padding: 8px;
+  margin: -8px;
+}
+
+.tooltip__icon {
+  color: var(--text);
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: bounding-box;
+}
+
+.tooltip:hover .tooltip__icon {
+  opacity: 1;
+}
+
+.tooltip__bubble {
+  // Координаты выставляет JS — это спасает от overflow:hidden у родителей
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background: var(--bg-card3);
+  border: 1px solid rgba(77, 144, 254, 0.3);
+  border-radius: var(--border-radius-s);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 12px 14px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  white-space: normal;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--bg-card3);
+  }
+}
+
+.tooltip__bubble.is-visible {
+  opacity: 1;
+}
+
+// Стрелка вверх — когда тултип открывается снизу иконки
+.tooltip__bubble.is-below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--bg-card3);
+}
+
+// ── Модификаторы положения ──
+
+// Тултип справа
+.tooltip--right .tooltip__bubble {
+  left: calc(100% + 10px);
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &::after {
+    top: 50%;
+    left: auto;
+    right: 100%;
+    transform: translateY(-50%);
+    border-top-color: transparent;
+    border-right-color: var(--bg-card3);
+  }
+}
+
+// Тултип слева
+.tooltip--left .tooltip__bubble {
+  right: calc(100% + 10px);
+  left: auto;
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &::after {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-top-color: transparent;
+    border-left-color: var(--bg-card3);
+  }
+}
+
+// Тултип снизу
+.tooltip--bottom .tooltip__bubble {
+  top: calc(100% + 10px);
+  bottom: auto;
+
+  &::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--bg-card3);
+  }
+}

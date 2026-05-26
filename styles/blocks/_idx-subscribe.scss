@@ -1,0 +1,254 @@
+/* ═══════════════════════════════════════════════════════
+   СЕКЦИЯ «ПОДПИСКА НА НОВОСТИ» — главная страница
+   Блок: .idx-subscribe
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Фон секции ───────────────────────────────────────── */
+.idx-subscribe {
+  padding: 56px 160px;
+  background: var(--bg);
+
+  /* ── Карточка формы ───────────────────────────────────
+     Центрированный прямоугольник с тёмным фоном.
+     max-width ограничивает ширину на широких экранах     */
+  &__card {
+    max-width: 1360px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 56px 24px;
+  }
+
+  /* ── Заголовок «Подпишитесь на новости» ──────────────
+     Крупный, по центру                                   */
+  &__title {
+    margin: 0 0 36px;
+    line-height: 1.25;
+  }
+
+  &__form {
+    margin-inline: 176px;
+    padding-inline: 24px;
+  }
+
+  /* ── «* Обязательные поля» ───────────────────────────
+     Мелкий текст акцентного цвета в начале формы        */
+  &__required {
+    font-size: 16px;
+    color: var(--accent);
+    margin: 0 0 24px;
+  }
+
+  /* ── Группа: лейбл + содержимое ──────────────────────  */
+  &__group {
+    margin-bottom: 28px;
+  }
+
+  /* ── Лейбл группы (например «Темы подписки*») ────────
+     Маленький uppercase с расстоянием между буквами     */
+  &__group-label {
+    font-size: 20px;
+    font-weight: 400;
+    
+    color: var(--white);
+    margin: 0 0 16px;
+  }
+
+  /* ── Сетка тем: 2 колонки ─────────────────────────── */
+  &__topics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+  }
+
+  /* ── Лейбл чекбокса (тема / согласие) ───────────────
+     cursor: pointer — весь ряд кликабелен               */
+  &__check-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.4;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--white);
+    }
+  }
+
+  /* ── Кастомный чекбокс ────────────────────────────────
+     Сбрасываем браузерный вид, рисуем свой квадрат.
+     ::after — галочка, появляется только при :checked   */
+  &__checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    border: 1px solid rgba(77, 144, 254, 0.4);
+    background: var(--bg-card2);
+    border-radius: var(--border-radius-xs);
+    cursor: pointer;
+    position: relative;
+    transition:
+      border-color 0.2s ease-in-out,
+      background 0.2s ease-in-out;
+
+    &:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+
+      /* Галочка */
+      &::after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 2px;
+        width: 5px;
+        height: 9px;
+        border: 2px solid var(--white);
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  }
+
+  /* ── Строка из двух полей ────────────────────────────
+     Имя+Фамилия, Телефон+Email — каждая пара рядом      */
+  &__fields-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* ── Поле: лейбл + input ─────────────────────────── */
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* ── Лейбл поля ──────────────────────────────────────  */
+  &__field-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+  }
+
+  /* ── Поле ввода ──────────────────────────────────────
+     При фокусе рамка меняется на акцентную             */
+  &__input {
+    padding: 13px 16px 11px;
+    background: var(--bg-card2);
+    border: var(--border);
+    border-radius: var(--border-radius-s);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+
+    &::placeholder {
+      color: rgba(222, 232, 245, 0.35);
+    }
+
+    &:focus {
+      border-color: var(--accent);
+    }
+  }
+
+  /* ── Блок согласий ───────────────────────────────────
+     Отделён от полей ввода отступом сверху             */
+  &__consents {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+
+    /* Ссылки внутри текста согласий */
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: var(--white);
+      }
+    }
+  }
+
+  /* Согласие = тот же лейбл-чекбокс, но текст мельче   */
+  &__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.55;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--white);
+    }
+  }
+
+  /* ── Кнопка «Отправить» ──────────────────────────────
+     Акцентный фон, по центру, широкая                  */
+  &__submit-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+}
+
+/* ── Планшет (до 1023px) ──────────────────────────────── */
+@media (max-width: 1023px) {
+  .idx-subscribe {
+    padding: 56px 40px 72px;
+
+    &__card {
+      padding: 48px 40px 40px;
+    }
+  }
+}
+
+/* ── Мобильный (до 767px) ─────────────────────────────── */
+@media (max-width: 767px) {
+  .idx-subscribe {
+    padding: 40px 16px 56px;
+
+    &__card {
+      padding: 36px 24px 32px;
+    }
+
+    /* Темы подписки — одна колонка */
+    &__topics {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    /* Поля — одна колонка */
+    &__fields-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    &__submit {
+      width: 100%;
+      padding: 16px 24px 14px;
+    }
+  }
+}

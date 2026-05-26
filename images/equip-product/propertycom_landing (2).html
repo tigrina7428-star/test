@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRO m² — Одна экосистема. Четыре суперсилы.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand: #F3F1ED;
+    --sand-light: #FAFAF8;
+    --navy-deep: #051821;
+    --navy: #063147;
+    --navy-mid: #0C4969;
+    --navy-muted: #447F9D;
+    --teal-dark: #1A4D47;
+    --teal: #2E7D72;
+    --teal-light: #4A9E93;
+    --teal-pale: #C8E8E5;
+    --teal-ultra: #EDF6F5;
+    --gold-dark: #6B4F0A;
+    --gold: #8B6914;
+    --gold-mid: #B89240;
+    --gold-pale: #F5EED4;
+    --slate-dark: #0E1C24;
+    --slate: #2C3E47;
+    --slate-mid: #4A6172;
+    --slate-light: #7A97A8;
+    --white: #FFFFFF;
+    --text-dim: rgba(14,28,36,0.55);
+    --text-dimmer: rgba(14,28,36,0.35);
+    --border: rgba(14,28,36,0.09);
+    --border-strong: rgba(14,28,36,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--sand-light);
+    color: var(--navy-deep);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 24px;
+    height: 56px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background: var(--navy-deep);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity 0.2s;
+    justify-self: start;
+  }
+
+  .logo:hover { opacity: 0.75; }
+
+  .nav-icon-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+    padding: 8px;
+  }
+
+  .nav-icon-center:hover { opacity: 1; }
+
+  .nav-burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    justify-self: end;
+    align-items: flex-end;
+  }
+
+  .nav-burger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--white);
+    border-radius: 1px;
+    transition: width 0.2s;
+  }
+
+  .nav-burger span:first-child { width: 16px; }
+  .nav-burger span:last-child { width: 24px; }
+  .nav-burger:hover span { width: 24px; }
+
+  /* HERO */
+  .hero {
+    padding-top: 56px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--sand-light);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 120%, rgba(46,125,114,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 20%, rgba(6,49,71,0.04) 0%, transparent 60%);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(64px, 9vw, 120px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--navy-deep);
+    position: relative;
+    max-width: 900px;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--teal);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-top: 28px;
+    max-width: 520px;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 48px;
+    position: relative;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--navy-deep);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 1px solid var(--navy-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--teal);
+    border-color: var(--teal);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--navy-deep);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 1px solid var(--border-strong);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--navy-deep);
+    transform: translateY(-1px);
+  }
+
+  /* MARQUEE TICKER */
+  .marquee-wrap {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 72px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--sand-light);
+  }
+
+  .marquee-wrap::before,
+  .marquee-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--sand-light) 0%, transparent 100%);
+  }
+
+  .marquee-wrap::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--sand-light) 0%, transparent 100%);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: marquee-scroll 28s linear infinite;
+  }
+
+  .marquee-track:hover { animation-play-state: paused; }
+
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 24px 56px;
+    border-right: 1px solid var(--border);
+    cursor: default;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .marquee-item:hover { background: var(--sand); }
+
+  .marquee-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 38px;
+    color: var(--navy-deep);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .marquee-info {
+    margin-left: 20px;
+  }
+
+  .marquee-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+    display: block;
+  }
+
+  .marquee-desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-dimmer);
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+
+  .marquee-divider {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--teal);
+    padding: 24px 0;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+
+  /* SECTION WRAPPER */
+  .section {
+    padding: 120px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(40px, 5vw, 68px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+    color: var(--navy-deep);
+    max-width: 640px;
+  }
+
+  .section-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-top: 20px;
+    max-width: 480px;
+    line-height: 1.65;
+  }
+
+  /* ROLE SWITCHER */
+  .roles-section {
+    background: var(--sand);
+    padding: 100px 48px;
+  }
+
+  .roles-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .roles-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .roles-tabs {
+    display: flex;
+    gap: 4px;
+    background: rgba(14,28,36,0.06);
+    border-radius: 4px;
+    padding: 4px;
+    margin: 0 auto 48px;
+    max-width: 700px;
+  }
+
+  .role-tab {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate);
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  .role-tab.active {
+    background: var(--navy-deep);
+    color: var(--white);
+  }
+
+  .role-content {
+    display: none;
+    animation: fadeUp 0.35s ease;
+  }
+
+  .role-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .role-info h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 4vw, 56px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--navy-deep);
+    line-height: 0.95;
+    margin-bottom: 20px;
+  }
+
+  .role-slogan {
+    font-size: 17px;
+    color: var(--text-dim);
+    font-weight: 300;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  .role-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .role-bullets li {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--slate);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .role-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .role-visual {
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .role-visual-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* BENTO GRID */
+  .bento-section {
+    background: var(--navy-deep);
+    padding: 100px 48px;
+  }
+
+  .bento-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .bento-header {
+    margin-bottom: 56px;
+  }
+
+  .bento-header .section-label { color: var(--teal-light); }
+  .bento-header .section-title { color: var(--white); }
+  .bento-header .section-sub { color: rgba(255,255,255,0.5); }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+
+  .bento-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .bento-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.14);
+  }
+
+  .bento-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .bento-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(26px, 2.5vw, 38px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .bento-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  .bento-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 5vw, 72px);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .bento-num-sub {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .gc-1 { grid-column: span 7; }
+  .gc-2 { grid-column: span 5; }
+  .gc-3 { grid-column: span 4; }
+  .gc-4 { grid-column: span 8; }
+  .gc-full { grid-column: span 12; }
+  .gc-6 { grid-column: span 6; }
+
+  .bento-accent {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(46,125,114,0.12);
+    pointer-events: none;
+  }
+
+  .bento-map-preview {
+    margin-top: 32px;
+    height: 140px;
+    border-radius: 2px;
+    background: rgba(6,49,71,0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74,158,147,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,158,147,0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .map-dots {
+    position: absolute;
+    inset: 0;
+  }
+
+  .map-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    box-shadow: 0 0 0 3px rgba(74,158,147,0.2);
+  }
+
+  .map-dot-label {
+    position: absolute;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+  }
+
+  .roi-bar {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .roi-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .roi-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .roi-track {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .roi-fill {
+    height: 100%;
+    background: var(--teal-light);
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  .roi-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal-light);
+    width: 48px;
+    text-align: right;
+  }
+
+  /* AI BLOCK */
+  .ai-section {
+    background: var(--sand-light);
+    padding: 100px 48px;
+  }
+
+  .ai-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .ai-prompt-area {
+    background: var(--white);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 32px;
+  }
+
+  .ai-prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 24px;
+  }
+
+  .ai-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .ai-chip {
+    padding: 12px 16px;
+    background: var(--sand);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 13px;
+    color: var(--slate);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .ai-chip:hover {
+    border-color: var(--teal);
+    background: var(--teal-ultra);
+    color: var(--teal-dark);
+  }
+
+  .ai-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .ai-input {
+    flex: 1;
+    border: 1px solid var(--border-strong);
+    border-radius: 2px;
+    padding: 10px 14px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--navy-deep);
+    background: var(--sand-light);
+    outline: none;
+  }
+
+  .ai-input:focus { border-color: var(--teal); }
+
+  .ai-send {
+    padding: 10px 20px;
+    background: var(--navy-deep);
+    color: var(--white);
+    border: none;
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .ai-send:hover { background: var(--teal); }
+
+  .ai-meta {
+    font-size: 11px;
+    color: var(--text-dimmer);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  /* TIMELINE */
+  .timeline-section {
+    background: var(--sand);
+    padding: 100px 48px;
+  }
+
+  .timeline-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .timeline-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-grid::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(12.5%);
+    right: calc(12.5%);
+    height: 1px;
+    background: var(--border-strong);
+  }
+
+  .timeline-step {
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .step-num {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--navy-deep);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num.teal { background: var(--teal); }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--navy-deep);
+    margin-bottom: 12px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* TRUST MARQUEE (dark version, reverse) */
+  .trust-marquee-wrap {
+    position: relative;
+    width: calc(100% + 96px);
+    left: -48px;
+    overflow: hidden;
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 48px;
+  }
+
+  .trust-marquee-wrap::before,
+  .trust-marquee-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .trust-marquee-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--navy-deep) 0%, transparent 100%);
+  }
+
+  .trust-marquee-wrap::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--navy-deep) 0%, transparent 100%);
+  }
+
+  .trust-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll-reverse 32s linear infinite;
+  }
+
+  .trust-marquee-track:hover { animation-play-state: paused; }
+
+  @keyframes marquee-scroll-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .trust-marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 28px 52px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+    cursor: default;
+    transition: background 0.2s;
+  }
+
+  .trust-marquee-item:hover { background: rgba(255,255,255,0.03); }
+
+  .trust-marquee-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 42px;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .trust-marquee-num span { color: var(--teal-light); }
+
+  .trust-marquee-info {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .trust-marquee-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+  }
+
+  .trust-marquee-sub {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.2);
+    white-space: nowrap;
+  }
+
+  .trust-marquee-sep {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--teal);
+    padding: 28px 0;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    flex-shrink: 0;
+    opacity: 0.3;
+  }
+
+  /* TRUST */
+  .trust-section {
+    background: var(--sand-light);
+    padding: 100px 48px;
+  }
+
+  .trust-inner {
+    
+    margin: 0 auto;
+  }
+
+  .trust-header {
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-bottom: 64px;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .trust-stat {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px;
+  }
+
+  .trust-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 52px;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--navy-deep);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .trust-num span { color: var(--teal); }
+
+  .trust-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+
+  .live-feed {
+    max-width: 1280px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px;
+  }
+
+  .live-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .live-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy-deep);
+  }
+
+  .live-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .live-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .live-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .live-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .live-icon.green { background: var(--teal-ultra); }
+  .live-icon.gold { background: var(--gold-pale); }
+  .live-icon.blue { background: rgba(12,73,105,0.07); }
+
+  .live-text {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  .live-time {
+    font-size: 11px;
+    color: var(--text-dimmer);
+    margin-top: 2px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    background: var(--navy-deep);
+    padding: 100px 48px;
+    text-align: center;
+  }
+
+  .footer-cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 96px);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    line-height: 0.92;
+    margin-bottom: 32px;
+  }
+
+  .footer-cta-title em { font-style: normal; color: var(--teal-light); }
+
+  .footer-cta-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 56px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .footer-cta-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 36px;
+    background: var(--white);
+    color: var(--navy-deep);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 1px solid var(--white);
+  }
+
+  .btn-white:hover { background: var(--teal-pale); border-color: var(--teal-pale); transform: translateY(-1px); }
+
+  .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 36px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-outline-white:hover {
+    border-color: rgba(255,255,255,0.6);
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--slate-dark);
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer p {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+  }
+
+  footer .logo { color: var(--white); }
+  footer .logo sup { color: var(--teal-light); }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    nav ul { display: none; }
+    .section, .roles-section, .bento-section, .ai-section, .timeline-section, .trust-section, .footer-cta, footer { padding-left: 24px; padding-right: 24px; }
+    .roles-tabs { flex-direction: column; }
+    .role-content.active { grid-template-columns: 1fr; }
+    .gc-1, .gc-2, .gc-3, .gc-4, .gc-6 { grid-column: span 12; }
+    .ai-inner { grid-template-columns: 1fr; }
+    .timeline-grid { grid-template-columns: 1fr 1fr; }
+    .trust-marquee-wrap { width: calc(100% + 48px); left: -24px; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .footer-cta-btns { flex-direction: column; align-items: center; }
+    .hero-stats { flex-wrap: wrap; gap: 32px; }
+    .bento-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <!-- LEFT: PRO m² wordmark logo -->
+  <a href="#" class="logo" aria-label="PRO m² — главная">
+    <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" height="56" style="display:block;">
+      <path fill="#FFFFFF" d="M10.5,86.2c14.7,0,47.4,0,62,0c14.9,0,27.2,12.2,27.2,27.2c0,14.9-12.3,27.2-27.2,27.2H25.5v25.7H10.5V86.2z M25.5,129.7h43.1c8.9,0,16.3-7.4,16.3-16.3c0-9-7.4-16.3-16.3-16.3H25.5V129.7z"/>
+      <path fill="#FFFFFF" d="M114.1,86.2c14.5,0,48.5,0,63.2,0c14.9,0,27.2,12.2,27.2,27.2c0,14-10.8,25.8-24.6,27.1l23.4,25.8H186l-23.3-25.7h-33.6v25.7h-14.9V86.2z M129.1,129.7h44.3c9,0,16.3-7.4,16.3-16.3c0-9-7.3-16.3-16.3-16.3h-44.3V129.7z"/>
+      <path fill="#FFFFFF" d="M290.5,86.2c16.9,0,30.7,13.8,30.7,30.7v18.8c0,16.8-13.8,30.7-30.7,30.7h-42.2c-16.9,0-30.7-13.9-30.7-30.7v-18.8c0-16.9,13.8-30.7,30.7-30.7H290.5z M286.6,155.4c10.8,0,19.7-8.9,19.7-19.7v-18.8c0-10.8-8.9-19.7-19.7-19.7h-34.3c-10.8,0-19.7,8.9-19.7,19.7v18.8c0,10.9,8.9,19.7,19.7,19.7H286.6z"/>
+      <path fill="#2E7D72" d="M418.5,106.7h-13.4c-6.1,0-11.6,2.4-15.7,6.3c-4.1-3.9-9.6-6.3-15.7-6.3h-13.4c-12.6,0-22.9,10.3-22.9,22.9v36.8h14.4v-36.1c0-9.1,5.7-13.4,15-13.4h0.4c9.3,0,15,4.3,15,13.4v36.1h0.1h14.4h0.1v-36.1c0-9.1,5.7-13.4,15-13.4h0.4c9.3,0,15,4.3,15,13.4v36.1h14.4v-36.8C441.4,117,431.1,106.7,418.5,106.7z"/>
+      <path fill="#2E7D72" d="M464.9,109.1c0-1.3,1.1-2.5,2.4-2.5H478c6.3,0,11.4-5.1,11.4-11.4c0-6.4-5.1-11.6-11.4-11.6h-21.6v9h20.2c1.3,0,2.4,1.2,2.4,2.6c0,1.3-1.1,2.4-2.4,2.4h-10.7c-6.2,0-11.4,5.2-11.4,11.4v9.5h34.1v-9h-23.7V109.1z"/>
+    </svg>
+  </a>
+
+  <!-- CENTER: chevron icon -->
+  <a href="#" class="nav-icon-center" aria-label="Меню">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" height="32" style="display:block;">
+      <polygon fill="#FFFFFF" points="191.9,406.4 191.9,482.2 80.4,417 80.4,340.6"/>
+      <polygon fill="#FFFFFF" points="364.3,304.8 364.3,380.6 192.6,482.6 191.9,482.2 191.9,406.4 192.6,406.8"/>
+      <polygon fill="#FFFFFF" points="191.9,278.8 191.9,354.6 80.4,289.4 80.4,213"/>
+      <polygon fill="#FFFFFF" points="364.3,177.2 364.3,253 192.6,355 191.9,354.6 191.9,278.8 192.6,279.3"/>
+      <polygon fill="#2E7D72" points="191.9,151.2 191.9,227 80.4,161.8 80.4,85.3"/>
+      <polygon fill="#2E7D72" points="418.7,17.2 418.7,93.1 192.6,227.4 191.9,227 191.9,151.2 192.6,151.6"/>
+    </svg>
+  </a>
+
+  <!-- RIGHT: burger menu -->
+  <button class="nav-burger" aria-label="Открыть меню">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow">Институциональная PropTech платформа</div>
+  <h1 class="hero-title">Одна<br>экосистема.<br><em>Четыре</em><br>суперсилы.</h1>
+  <p class="hero-sub">Выберите вашу роль — платформа адаптируется под ваши задачи и цели</p>
+  <div class="hero-actions">
+    <a href="#roles" class="btn-primary">Выбрать роль →</a>
+    <a href="#analytics" class="btn-ghost">Смотреть демо</a>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- Set 1 -->
+      <div class="marquee-item">
+        <div class="marquee-num">150+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Застройщиков</span>
+          <span class="marquee-desc">Верифицированных партнёров</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">$1.2B+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Объектов на карте</span>
+          <span class="marquee-desc">Общая стоимость портфеля</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">15 000+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Верифицированных отзывов</span>
+          <span class="marquee-desc">Без ботов и накруток</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">10K+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Риелторов в сети</span>
+          <span class="marquee-desc">Активных агентств</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">50+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">AI-параметров</span>
+          <span class="marquee-desc">В каждом анализе объекта</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">1 день</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Выход на рынок</span>
+          <span class="marquee-desc">Для застройщиков</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">×3</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Скорость сделки</span>
+          <span class="marquee-desc">Vs. стандартный рынок</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">10+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Банков-партнёров</span>
+          <span class="marquee-desc">Ипотека онлайн</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <!-- Set 2 (duplicate for infinite loop) -->
+      <div class="marquee-item">
+        <div class="marquee-num">150+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Застройщиков</span>
+          <span class="marquee-desc">Верифицированных партнёров</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">$1.2B+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Объектов на карте</span>
+          <span class="marquee-desc">Общая стоимость портфеля</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">15 000+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Верифицированных отзывов</span>
+          <span class="marquee-desc">Без ботов и накруток</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">10K+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Риелторов в сети</span>
+          <span class="marquee-desc">Активных агентств</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">50+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">AI-параметров</span>
+          <span class="marquee-desc">В каждом анализе объекта</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">1 день</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Выход на рынок</span>
+          <span class="marquee-desc">Для застройщиков</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">×3</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Скорость сделки</span>
+          <span class="marquee-desc">Vs. стандартный рынок</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+      <div class="marquee-item">
+        <div class="marquee-num">10+</div>
+        <div class="marquee-info">
+          <span class="marquee-label">Банков-партнёров</span>
+          <span class="marquee-desc">Ипотека онлайн</span>
+        </div>
+      </div>
+      <div class="marquee-divider">×</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES SECTION -->
+<section class="roles-section" id="roles">
+  <div class="roles-inner">
+    <div class="roles-header">
+      <div class="section-label">Мультиролевой доступ</div>
+      <h2 class="section-title" style="margin: 0 auto; text-align: center;">Ваша роль.<br>Ваши инструменты.</h2>
+    </div>
+
+    <div class="roles-tabs">
+      <button class="role-tab active" onclick="setRole(0)">Инвестор</button>
+      <button class="role-tab" onclick="setRole(1)">Застройщик</button>
+      <button class="role-tab" onclick="setRole(2)">Риелтор</button>
+      <button class="role-tab" onclick="setRole(3)">Покупатель</button>
+    </div>
+
+    <div class="role-content active" id="role-0">
+      <div class="role-info">
+        <div class="section-label">Я — Инвестор</div>
+        <h2>Максимизируйте ROI без рутины</h2>
+        <p class="role-slogan">Институциональный анализ доходности и доступ к закрытым сделкам в одном интерфейсе.</p>
+        <ul class="role-bullets">
+          <li>AI-анализ доходности локаций в реальном времени</li>
+          <li>Доступ к закрытым pre-sale пулам</li>
+          <li>Мониторинг портфеля с точными метриками</li>
+        </ul>
+        <a href="#" class="btn-primary">Найти высокодоходные объекты →</a>
+      </div>
+      <div class="role-visual">
+        <div class="role-visual-bg" style="background: linear-gradient(135deg, #063147 0%, #0C4969 100%);">
+          <div style="text-align:center; padding: 32px;">
+            <div style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:48px; color:#fff; line-height:1; margin-bottom:8px;">12.4%</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:32px;">Прогноз доходности</div>
+            <div style="display:flex; flex-direction:column; gap:8px; text-align:left;">
+              <div style="display:flex; justify-content:space-between; font-size:12px; color:rgba(255,255,255,0.55);">
+                <span style="text-transform:uppercase; letter-spacing:0.06em;">Окупаемость</span>
+                <span style="color:#4A9E93; font-weight:600;">7.2 лет</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:12px; color:rgba(255,255,255,0.55);">
+                <span style="text-transform:uppercase; letter-spacing:0.06em;">ROI / год</span>
+                <span style="color:#4A9E93; font-weight:600;">+12.4%</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:12px; color:rgba(255,255,255,0.55);">
+                <span style="text-transform:uppercase; letter-spacing:0.06em;">Налог учтён</span>
+                <span style="color:#4A9E93; font-weight:600;">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-content" id="role-1">
+      <div class="role-info">
+        <div class="section-label">Я — Застройщик</div>
+        <h2>Прямой доступ к капиталу и покупателям</h2>
+        <p class="role-slogan">Выводите крупные проекты на рынок за один день с готовой инфраструктурой.</p>
+        <ul class="role-bullets">
+          <li>Вывод крупных проектов на рынок за 1 день</li>
+          <li>Интеграция ваших 3D-туров</li>
+          <li>Готовая сеть из 10 000+ риелторов</li>
+        </ul>
+        <a href="#" class="btn-primary">Разместить проект →</a>
+      </div>
+      <div class="role-visual">
+        <div class="role-visual-bg" style="background: linear-gradient(135deg, #1A4D47 0%, #2E7D72 100%);">
+          <div style="text-align:center; padding:32px;">
+            <div style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:42px; color:#fff; line-height:1; margin-bottom:8px; text-transform:uppercase;">1 день</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:32px;">Время выхода на рынок</div>
+            <div style="background:rgba(255,255,255,0.08); border-radius:2px; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.6); text-align:left; line-height:1.7;">
+              Ваш проект ↗ 10 000+ риелторов<br>3D-туры ↗ интегрированы<br>Аналитика ↗ в реальном времени
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-content" id="role-2">
+      <div class="role-info">
+        <div class="section-label">Я — Риелтор / Агентство</div>
+        <h2>Закрывайте сделки в 3 раза быстрее</h2>
+        <p class="role-slogan">Единое цифровое сопровождение сделки с прозрачной комиссией.</p>
+        <ul class="role-bullets">
+          <li>Интерактивная карта объектов с вашей наценкой</li>
+          <li>Единое цифровое сопровождение сделки</li>
+          <li>Проверенные застройщики с прозрачной комиссией</li>
+        </ul>
+        <a href="#" class="btn-primary">Подключить агентство →</a>
+      </div>
+      <div class="role-visual">
+        <div class="role-visual-bg" style="background: linear-gradient(135deg, #0E1C24 0%, #2C3E47 100%);">
+          <div style="text-align:center; padding:32px;">
+            <div style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:42px; color:#fff; line-height:1; margin-bottom:8px; text-transform:uppercase;">×3</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:32px;">Скорость закрытия</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7; text-align:left;">
+              Карта → Клиент → Сделка<br>Всё в одном интерфейсе.<br>Без лишних шагов.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-content" id="role-3">
+      <div class="role-info">
+        <div class="section-label">Я — Покупатель</div>
+        <h2>Квартира мечты без посредников и переплат</h2>
+        <p class="role-slogan">AI-подбор, честные рейтинги и ипотека в одном месте.</p>
+        <ul class="role-bullets">
+          <li>Честный рейтинг застройщиков</li>
+          <li>AI-подбор под ваш бюджет и параметры</li>
+          <li>Ипотечный калькулятор для 10+ банков</li>
+        </ul>
+        <a href="#" class="btn-primary">Начать поиск на карте →</a>
+      </div>
+      <div class="role-visual">
+        <div class="role-visual-bg" style="background: linear-gradient(135deg, #6B4F0A 0%, #B89240 100%);">
+          <div style="text-align:center; padding:32px;">
+            <div style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:38px; color:#fff; line-height:1; margin-bottom:8px; text-transform:uppercase;">AI-подбор</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:24px;">50+ параметров</div>
+            <div style="background:rgba(255,255,255,0.1); padding:12px 16px; border-radius:2px; font-size:12px; color:rgba(255,255,255,0.7); text-align:left; font-style:italic; line-height:1.6;">
+              "Найди 3-комн. до $200k с 3D-туром рядом с парком"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO ANALYTICS -->
+<section class="bento-section" id="analytics">
+  <div class="bento-inner">
+    <div class="bento-header reveal">
+      <div class="section-label">Аналитика нового уровня</div>
+      <h2 class="section-title" style="color: #fff;">Оцените масштаб проекта,<br>не вставая из-за стола</h2>
+      <p class="section-sub" style="color: rgba(255,255,255,0.45);">Умные слои карты, 3D-туры и PropTech-калькулятор в одном окне.</p>
+    </div>
+
+    <div class="bento-grid">
+
+      <!-- Map card -->
+      <div class="bento-card gc-1 reveal reveal-delay-1">
+        <span class="bento-tag">Умные слои карты</span>
+        <div class="bento-title">Тепловые зоны<br>в реальном времени</div>
+        <p class="bento-desc">Инфраструктура, транспортная доступность, динамика роста цен — всё на одном экране.</p>
+        <div class="bento-map-preview">
+          <div class="map-grid"></div>
+          <div class="map-dots">
+            <div class="map-dot" style="left:20%; top:30%; background:#4A9E93;">
+              <div class="map-dot-label">+18%</div>
+            </div>
+            <div class="map-dot" style="left:55%; top:55%; background:#B89240;">
+              <div class="map-dot-label">+12%</div>
+            </div>
+            <div class="map-dot" style="left:75%; top:25%; background:#4A9E93;">
+              <div class="map-dot-label">+24%</div>
+            </div>
+            <div class="map-dot" style="left:40%; top:70%; background:#447F9D;">
+              <div class="map-dot-label">+9%</div>
+            </div>
+          </div>
+          <div style="position:absolute; bottom:12px; left:16px; font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3);">Динамика роста цен</div>
+        </div>
+      </div>
+
+      <!-- ROI card -->
+      <div class="bento-card gc-2 reveal reveal-delay-2">
+        <span class="bento-tag">PropTech-Калькулятор</span>
+        <div class="bento-title">ЖК «Аврора»</div>
+        <div class="roi-bar">
+          <div class="roi-row">
+            <div class="roi-label">Доходность</div>
+            <div class="roi-track"><div class="roi-fill" style="width:72%;"></div></div>
+            <div class="roi-val">12.4%</div>
+          </div>
+          <div class="roi-row">
+            <div class="roi-label">Ликвидность</div>
+            <div class="roi-track"><div class="roi-fill" style="width:85%;"></div></div>
+            <div class="roi-val">8.5/10</div>
+          </div>
+          <div class="roi-row">
+            <div class="roi-label">Инфра</div>
+            <div class="roi-track"><div class="roi-fill" style="width:90%;"></div></div>
+            <div class="roi-val">A+</div>
+          </div>
+          <div class="roi-row">
+            <div class="roi-label">Застройщик</div>
+            <div class="roi-track"><div class="roi-fill" style="width:95%;"></div></div>
+            <div class="roi-val">4.9★</div>
+          </div>
+        </div>
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); font-size:11px; color:rgba(255,255,255,0.25); letter-spacing:0.06em; text-transform:uppercase;">Срок окупаемости — 7.2 лет</div>
+      </div>
+
+      <!-- 3D tour stat -->
+      <div class="bento-card gc-3 reveal reveal-delay-1" style="background: rgba(46,125,114,0.12); border-color: rgba(74,158,147,0.2);">
+        <span class="bento-tag">3D-Телепорт</span>
+        <div class="bento-num">3D</div>
+        <div class="bento-num-sub" style="color: rgba(74,158,147,0.7);">Туры встроены</div>
+        <p class="bento-desc" style="margin-top: 16px;">Виртуальный визит по строящемуся ЖК прямо в браузере. Интеграция с ведущими VR-сервисами.</p>
+        <div class="bento-accent"></div>
+      </div>
+
+      <!-- Stats -->
+      <div class="bento-card gc-3 reveal reveal-delay-2">
+        <span class="bento-tag">Эко-система</span>
+        <div class="bento-num">150+</div>
+        <div class="bento-num-sub">Застройщиков</div>
+      </div>
+
+      <div class="bento-card gc-6 reveal reveal-delay-3">
+        <span class="bento-tag">Маркет-покрытие</span>
+        <div class="bento-title">Вся аналитика<br>на одном экране</div>
+        <p class="bento-desc">AI анализирует 50+ параметров: от планов развития города до репутации застройщика по реальным отзывам.</p>
+      </div>
+
+      <div class="bento-card gc-3 reveal reveal-delay-4" style="background: rgba(184,146,64,0.1); border-color: rgba(184,146,64,0.2);">
+        <span class="bento-tag" style="color: #B89240;">Pre-sale пулы</span>
+        <div class="bento-num" style="color: #B89240;">Closed</div>
+        <div class="bento-num-sub" style="color: rgba(184,146,64,0.5);">Доступ инвесторам</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI SCREENER -->
+<section class="ai-section">
+  <div class="ai-inner">
+    <div>
+      <div class="section-label">AI-Ассистент</div>
+      <h2 class="section-title">Спросите.<br>Он знает<br>всё.</h2>
+      <p class="section-sub">Наш ИИ анализирует 50+ параметров: от планов развития города до репутации застройщика по отзывам дольщиков.</p>
+    </div>
+    <div class="ai-prompt-area">
+      <div class="ai-prompt-label">Популярные запросы</div>
+      <div class="ai-chips">
+        <div class="ai-chip">🔹 "Найди ЖК в радиусе 2 км от парков с доходностью от 10% годовых"</div>
+        <div class="ai-chip">🔹 "Где планируется открытие метро? Покажи перспективные объекты"</div>
+        <div class="ai-chip">🔹 "Подборка 3-комнатных с готовыми 3D-турами до $200k"</div>
+      </div>
+      <div class="ai-input-row">
+        <input type="text" class="ai-input" placeholder="Задать вопрос AI-ассистенту PropertyCom...">
+        <button class="ai-send">→</button>
+      </div>
+      <div class="ai-meta">Анализирует 50+ параметров в реальном времени. Без регистрации.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="process">
+  <div class="timeline-inner">
+    <div class="timeline-header">
+      <div class="section-label">Цифровая сделка</div>
+      <h2 class="section-title" style="margin: 0 auto; text-align: center; max-width: 600px;">От первого клика<br>до права собственности</h2>
+      <p class="section-sub" style="margin: 20px auto 0; text-align: center;">Четыре шага. Нулевая бюрократия.</p>
+    </div>
+
+    <div class="timeline-grid">
+      <div class="timeline-step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <div class="step-title">Смарт-подбор</div>
+        <p class="step-desc">Выбираете объект на кастомизированной карте. Изучаете честные рейтинги застройщика и отзывы реальных дольщиков.</p>
+      </div>
+      <div class="timeline-step reveal reveal-delay-2">
+        <div class="step-num teal">02</div>
+        <div class="step-title">Виртуальный визит</div>
+        <p class="step-desc">Проходите по объекту через встроенный 3D-тур. Консультируетесь с застройщиком напрямую в защищённом чате.</p>
+      </div>
+      <div class="timeline-step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <div class="step-title">PropTech-расчёт</div>
+        <p class="step-desc">Система автоматически рассчитывает ипотеку в 10+ банках-партнёрах и выдаёт точную оценку привлекательности.</p>
+      </div>
+      <div class="timeline-step reveal reveal-delay-4">
+        <div class="step-num teal">04</div>
+        <div class="step-title">Э-подписание</div>
+        <p class="step-desc">Цифровое сопровождение сделки. Документы проверяют юристы платформы. Подписание онлайн. Без бумажной волокиты.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="trust-inner">
+    <div class="trust-header reveal">
+      <div class="section-label">Прозрачность</div>
+      <h2 class="section-title">Прозрачность,<br>подкреплённая<br>фактами.</h2>
+    </div>
+
+    <div class="trust-marquee-wrap reveal">
+      <div class="trust-marquee-track">
+        <!-- Set 1 -->
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">150<span>+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Застройщиков</span>
+            <span class="trust-marquee-sub">Крупных партнёров в обойме</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">$1.2<span>B+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Объектов на карте</span>
+            <span class="trust-marquee-sub">Общая стоимость портфеля</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">15K<span>+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Верифицированных отзывов</span>
+            <span class="trust-marquee-sub">Без ботов и накруток</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">10K<span>+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Риелторов в сети</span>
+            <span class="trust-marquee-sub">Активных агентств</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">4.9<span>★</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Средний рейтинг</span>
+            <span class="trust-marquee-sub">Застройщиков платформы</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">0%</div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Скрытых комиссий</span>
+            <span class="trust-marquee-sub">Полная прозрачность</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <!-- Set 2 duplicate -->
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">150<span>+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Застройщиков</span>
+            <span class="trust-marquee-sub">Крупных партнёров в обойме</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">$1.2<span>B+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Объектов на карте</span>
+            <span class="trust-marquee-sub">Общая стоимость портфеля</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">15K<span>+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Верифицированных отзывов</span>
+            <span class="trust-marquee-sub">Без ботов и накруток</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">10K<span>+</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Риелторов в сети</span>
+            <span class="trust-marquee-sub">Активных агентств</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">4.9<span>★</span></div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Средний рейтинг</span>
+            <span class="trust-marquee-sub">Застройщиков платформы</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+        <div class="trust-marquee-item">
+          <div class="trust-marquee-num">0%</div>
+          <div class="trust-marquee-info">
+            <span class="trust-marquee-label">Скрытых комиссий</span>
+            <span class="trust-marquee-sub">Полная прозрачность</span>
+          </div>
+        </div>
+        <div class="trust-marquee-sep">—</div>
+      </div>
+    </div>
+
+    <div class="live-feed reveal">
+      <div class="live-header">
+        <div class="live-dot"></div>
+        <div class="live-title">Живая активность платформы</div>
+      </div>
+      <div class="live-items">
+        <div class="live-item">
+          <div class="live-icon green">📈</div>
+          <div>
+            <div class="live-text">Застройщик «ГрадИнвест» обновил 3D-тур для ЖК «Оазис» — доступно для просмотра</div>
+            <div class="live-time">2 мин назад</div>
+          </div>
+        </div>
+        <div class="live-item">
+          <div class="live-icon gold">⭐</div>
+          <div>
+            <div class="live-text">Риелтор Анна К. получила оценку 5.0 за сопровождение сделки — 47 успешных закрытий</div>
+            <div class="live-time">8 мин назад</div>
+          </div>
+        </div>
+        <div class="live-item">
+          <div class="live-icon blue">🌍</div>
+          <div>
+            <div class="live-text">Инвестор из Германии забронировал коммерческое помещение через AI-подбор</div>
+            <div class="live-time">14 мин назад</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta">
+  <div class="footer-cta-title">Войдите<br>в <em>экосистему</em><br>сегодня.</div>
+  <p class="footer-cta-sub">Выберите, как вы хотите работать с PRO m² — как партнёр или как клиент.</p>
+  <div class="footer-cta-btns">
+    <a href="#" class="btn-white">Стать партнёром экосистемы →</a>
+    <a href="#" class="btn-outline-white">Открыть карту объектов</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo" aria-label="PRO m²">
+    <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" height="22" style="display:block; opacity:0.7;">
+      <path fill="#FFFFFF" d="M10.5,86.2c14.7,0,47.4,0,62,0c14.9,0,27.2,12.2,27.2,27.2c0,14.9-12.3,27.2-27.2,27.2H25.5v25.7H10.5V86.2z M25.5,129.7h43.1c8.9,0,16.3-7.4,16.3-16.3c0-9-7.4-16.3-16.3-16.3H25.5V129.7z"/>
+      <path fill="#FFFFFF" d="M114.1,86.2c14.5,0,48.5,0,63.2,0c14.9,0,27.2,12.2,27.2,27.2c0,14-10.8,25.8-24.6,27.1l23.4,25.8H186l-23.3-25.7h-33.6v25.7h-14.9V86.2z M129.1,129.7h44.3c9,0,16.3-7.4,16.3-16.3c0-9-7.3-16.3-16.3-16.3h-44.3V129.7z"/>
+      <path fill="#FFFFFF" d="M290.5,86.2c16.9,0,30.7,13.8,30.7,30.7v18.8c0,16.8-13.8,30.7-30.7,30.7h-42.2c-16.9,0-30.7-13.9-30.7-30.7v-18.8c0-16.9,13.8-30.7,30.7-30.7H290.5z M286.6,155.4c10.8,0,19.7-8.9,19.7-19.7v-18.8c0-10.8-8.9-19.7-19.7-19.7h-34.3c-10.8,0-19.7,8.9-19.7,19.7v18.8c0,10.9,8.9,19.7,19.7,19.7H286.6z"/>
+      <path fill="#2E7D72" d="M418.5,106.7h-13.4c-6.1,0-11.6,2.4-15.7,6.3c-4.1-3.9-9.6-6.3-15.7-6.3h-13.4c-12.6,0-22.9,10.3-22.9,22.9v36.8h14.4v-36.1c0-9.1,5.7-13.4,15-13.4h0.4c9.3,0,15,4.3,15,13.4v36.1h0.1h14.4h0.1v-36.1c0-9.1,5.7-13.4,15-13.4h0.4c9.3,0,15,4.3,15,13.4v36.1h14.4v-36.8C441.4,117,431.1,106.7,418.5,106.7z"/>
+      <path fill="#2E7D72" d="M464.9,109.1c0-1.3,1.1-2.5,2.4-2.5H478c6.3,0,11.4-5.1,11.4-11.4c0-6.4-5.1-11.6-11.4-11.6h-21.6v9h20.2c1.3,0,2.4,1.2,2.4,2.6c0,1.3-1.1,2.4-2.4,2.4h-10.7c-6.2,0-11.4,5.2-11.4,11.4v9.5h34.1v-9h-23.7V109.1z"/>
+    </svg>
+  </a>
+  <p>© 2025 PropertyCom. Институциональная PropTech платформа.</p>
+  <p style="color: rgba(255,255,255,0.15);">Urban Intelligence System</p>
+</footer>
+
+<script>
+  function setRole(idx) {
+    document.querySelectorAll('.role-tab').forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+    });
+    document.querySelectorAll('.role-content').forEach((c, i) => {
+      c.classList.toggle('active', i === idx);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

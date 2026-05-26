@@ -1,0 +1,222 @@
+/* ════════════════════════════════════════
+   ORDER PAGE — order.css
+   Страница «Заказать онлайн»
+   Использует переменные из styles.css
+   ════════════════════════════════════════ */
+
+/* ── Плавное появление страницы ── */
+#page-content {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+#page-content.page-visible {
+  opacity: 1;
+}
+
+/* ══ HERO ══ */
+.order-hero {
+  background: var(--bg);
+  padding: 96px 40px 72px;
+  text-align: center;
+}
+
+.order-hero__title {
+  font-family: var(--font-head);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.order-hero__title span {
+  color: var(--accent);
+}
+
+.order-hero__sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.order-hero__sub span {
+  color: var(--accent);
+}
+
+/* ══ ВЫБОР МОДЕЛИ ══ */
+.order-models {
+  background: var(--bg);
+  padding: 0 0 100px;
+}
+
+.order-models__heading {
+  text-align: center;
+  font-family: var(--font-head);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+  padding: 64px 40px 56px;
+  letter-spacing: -0.01em;
+}
+
+/* ── Сетка карточек ── */
+.order-models__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1760px;
+  margin: 0 auto;
+}
+
+/* ── Карточка модели ── */
+.order-model-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--bg);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.order-model-card:last-child {
+  border-right: 1px solid transparent;
+}
+
+.order-model-card:hover {
+  background: var(--bg-card);
+  border-color: rgba(46, 143, 232, 0.18);
+  z-index: 1;
+}
+
+/* ── Фото ── */
+.order-model-card__img {
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.order-model-card__img img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.order-model-card:hover .order-model-card__img img {
+  transform: scale(1.04);
+}
+
+/* ── Тело карточки ── */
+.order-model-card__body {
+  padding: 28px 36px 36px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-model-card__name {
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.order-model-card__tagline {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.order-model-card__area {
+  font-size: 13px;
+  color: var(--text80);
+  margin-top: 2px;
+}
+
+/* ── CTA-стрелка (появляется при hover) ── */
+.order-model-card__arrow {
+  margin-top: auto;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text80);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.order-model-card:hover .order-model-card__arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent);
+}
+
+/* ══ АДАПТИВ ══ */
+@media (max-width: 1100px) {
+  .order-models__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .order-model-card {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .order-model-card:nth-child(2n) {
+    border-right: 1px solid transparent;
+  }
+
+  .order-model-card:nth-child(n+3) {
+    border-top: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .order-hero {
+    padding: 72px 24px 56px;
+  }
+
+  .order-models__heading {
+    padding: 48px 24px 40px;
+  }
+
+  .order-models__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-model-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .order-model-card:last-child {
+    border-bottom: none;
+  }
+
+  .order-model-card__body {
+    padding: 24px;
+  }
+
+  .order-model-card__name {
+    font-size: 26px;
+  }
+}
